@@ -56,6 +56,9 @@ public class MarsRover {
                     case 'M':
                         moveForward();
                         break;
+                    case 'B':
+                        moveBackward();
+                        break;
 
                 }
             }
@@ -80,6 +83,23 @@ public class MarsRover {
         }
     }
 
+    private void moveBackward() {
+        switch (directionStatus[directionIndex]) {
+            case 'N':
+                y--;
+                break;
+            case 'E':
+                x--;
+                break;
+            case 'S':
+                y++;
+                break;
+            case 'W':
+                x++;
+                break;
+        }
+    }
+
     private void changeDirection(char turn) {
         if (turn == 'R') {
             directionIndex = (directionIndex + 1) % 4;
@@ -92,7 +112,7 @@ public class MarsRover {
         MarsRover rover = new MarsRover(0, 0, 'N');
         String status = rover.updateStatus("M");
         String status2 = rover.updateStatus("R");
-        String status3 = rover.updateStatus("P");
+        String status3 = rover.updateStatus("B");
 
     }
 }

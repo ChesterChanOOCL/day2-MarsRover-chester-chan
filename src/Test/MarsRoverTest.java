@@ -181,6 +181,7 @@ public class MarsRoverTest {
 
 
 
+
     @Test
     public void should_stay_the_same_when_inputInvalidCharacter_given_minus1_minus1_S(){
         // Given
