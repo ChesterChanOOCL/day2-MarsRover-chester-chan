@@ -83,6 +83,19 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("-1:-1:E", report);
     }
+    @Test
+    public void should_face_west_when_orient_south_and_turn_right(){
+
+        // Given
+        MarsRover rover = new MarsRover(0,0,'S');
+
+        //When
+        rover.updateStatus("R");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("0:0:W", report);
+    }
 
     @Test
     public void should_stay_the_same_when_inputInvalidCharacter_given_minus1_minus1_S(){
