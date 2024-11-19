@@ -8,9 +8,8 @@ public class MarsRover {
     private char direction;
     private int directionIndex;
 
-
     public enum Command {
-        L, R , M
+        L, R, M, B
     }
 
     public MarsRover(int x, int y, char direction) {
@@ -34,8 +33,8 @@ public class MarsRover {
         return x + ":" + y + ":" + getDirection();
     }
 
-    private boolean isValidCommand(char command){
-        for (Command cmd: Command.values()){
+    private boolean isValidCommand(char command) {
+        for (Command cmd : Command.values()) {
             if (cmd.name().charAt(0) == command) {
                 return true;
             }
@@ -59,7 +58,8 @@ public class MarsRover {
                     case 'B':
                         moveBackward();
                         break;
-
+                    default:
+                        throw new IllegalArgumentException("Invalid command: " + command);
                 }
             }
         }
@@ -104,12 +104,13 @@ public class MarsRover {
         if (turn == 'R') {
             directionIndex = (directionIndex + 1) % 4;
         } else if (turn == 'L') {
-            directionIndex = (directionIndex + 3 ) % 4;
+            directionIndex = (directionIndex + 3) % 4;
         }
     }
 
     public static void main(String[] args) {
         MarsRover rover = new MarsRover(0, 0, 'N');
-        String status3 = rover.updateStatus("M");
+        rover.updateStatus("MMRM");
+        rover.showStatus();  // This will show the final status after executing all commands
     }
 }

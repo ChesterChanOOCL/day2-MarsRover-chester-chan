@@ -194,6 +194,19 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("-1:-1:S", report);
     }
+    //EXTRA feature
+    @Test
+    public void should_be_1_2_E_when_multipleCommand_given_0_0_N(){
+        // Given
+        MarsRover rover = new MarsRover(0,0,'N');
+
+        //When
+        rover.updateStatus("MMRM");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("1:2:E", report);
+    }
 
 
 
