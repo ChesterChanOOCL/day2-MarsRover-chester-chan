@@ -165,6 +165,20 @@ public class MarsRoverTest {
         Assertions.assertEquals("0:-1:S", report);
     }
 
+    @Test
+    public void should_be_minus1_0_W_when_0_0_W_and_move_forward(){
+
+        // Given
+        MarsRover rover = new MarsRover(0,0,'W');
+
+        //When
+        rover.updateStatus("M");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("-1:0:W", report);
+    }
+
 
 
     @Test
