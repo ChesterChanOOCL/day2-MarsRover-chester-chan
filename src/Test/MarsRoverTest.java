@@ -55,7 +55,18 @@ public class MarsRoverTest {
         Assertions.assertEquals("-1:-1:E", report);
     }
 
+    @Test
+    public void should_be_minus1_minus1_W_when_turn_right_given_minus1_minus1_S(){
+        // Given
+        MarsRover rover = new MarsRover(-1,-1,'S');
 
+        //When
+        rover.updateStatus("R");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("-1:-1:W", report);
+    }
 
 
 }
