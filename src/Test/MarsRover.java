@@ -8,6 +8,11 @@ public class MarsRover {
     private char direction;
     private int directionIndex;
 
+
+    public enum Command {
+        L, R , M
+    }
+
     public MarsRover(int x, int y, char direction) {
         this.x = x;
         this.y = y;
@@ -29,20 +34,30 @@ public class MarsRover {
         return x + ":" + y + ":" + getDirection();
     }
 
+    private boolean isValidCommand(char command){
+        for (Command cmd: Command.values()){
+            if (cmd.name().charAt(0) == command) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public String updateStatus(String commands) {
         for (char command : commands.toCharArray()) {
-            switch (command) {
-                case 'R':
-                    changeDirection('R');
-                    break;
-                case 'L':
-                    changeDirection('L');
-                    break;
-                case 'M':
-                    moveForward();
-                    break;
-                default:
-                    throw new IllegalArgumentException("Invalid command: " + command);
+            if (isValidCommand(command)) {
+                switch (command) {
+                    case 'R':
+                        changeDirection('R');
+                        break;
+                    case 'L':
+                        changeDirection('L');
+                        break;
+                    case 'M':
+                        moveForward();
+                        break;
+
+                }
             }
         }
         return showStatus();
