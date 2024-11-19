@@ -137,6 +137,20 @@ public class MarsRoverTest {
         Assertions.assertEquals("0:1:N", report);
     }
 
+    @Test
+    public void should_be_1_0_E_when_0_0_E_and_move_forward(){
+
+        // Given
+        MarsRover rover = new MarsRover(0,0,'E');
+
+        //When
+        rover.updateStatus("M");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("1:0:E", report);
+    }
+
 
 
     @Test
