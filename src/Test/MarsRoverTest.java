@@ -96,6 +96,34 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:W", report);
     }
+    @Test
+    public void should_face_south_when_orient_west_and_turn_left(){
+
+        // Given
+        MarsRover rover = new MarsRover(0,0,'W');
+
+        //When
+        rover.updateStatus("L");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("0:0:S", report);
+    }
+    @Test
+    public void should_face_north_when_orient_west_and_turn_right(){
+
+        // Given
+        MarsRover rover = new MarsRover(0,0,'W');
+
+        //When
+        rover.updateStatus("R");
+        String report = rover.showStatus();
+
+        //Then
+        Assertions.assertEquals("0:0:N", report);
+    }
+
+
 
     @Test
     public void should_stay_the_same_when_inputInvalidCharacter_given_minus1_minus1_S(){
