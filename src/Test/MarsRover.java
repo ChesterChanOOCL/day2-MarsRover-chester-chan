@@ -92,6 +92,7 @@ public class MarsRover {
         MarsRover rover = new MarsRover(0, 0, 'N');
         String status = rover.updateStatus("M");
         String status2 = rover.updateStatus("R");
+        String status3 = rover.updateStatus("P");
 
     }
 }

@@ -56,17 +56,18 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_be_minus1_minus1_W_when_turn_right_given_minus1_minus1_S(){
+    public void should_stay_the_same_when_inputInvalidCharacter_given_minus1_minus1_S(){
         // Given
         MarsRover rover = new MarsRover(-1,-1,'S');
 
         //When
-        rover.updateStatus("R");
+        rover.updateStatus("P");
         String report = rover.showStatus();
 
         //Then
-        Assertions.assertEquals("-1:-1:W", report);
+        Assertions.assertEquals("-1:-1:S", report);
     }
+
 
 
 }
