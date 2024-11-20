@@ -102,7 +102,6 @@ public class MarsRover {
     private void changeDirection(char turn) {
         if (turn == 'R') {
             directionIndex = directionIndex > 0 ?  (directionIndex + 1) % 4  : ((directionIndex + 5) % 4);
-
         } else if (turn == 'L') {
             directionIndex =  directionIndex > 0 ? (directionIndex + 3) % 4 :  ((directionIndex + 7) % 4);
         }
@@ -111,6 +110,7 @@ public class MarsRover {
     public static void main(String[] args) {
         MarsRover rover = new MarsRover(0, 0, 'N');
         rover.updateStatus("MMRM");
+
         rover.showStatus();
     }
 }
