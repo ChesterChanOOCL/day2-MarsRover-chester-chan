@@ -1,5 +1,8 @@
 package Test;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class MarsRover {
     private static char[] directionStatus = {'N', 'E', 'S', 'W'};
     private int x;
@@ -15,13 +18,12 @@ public class MarsRover {
         this.x = x;
         this.y = y;
         this.direction = direction;
-        for (int i = 0; i < directionStatus.length; i++) {
-            if (directionStatus[i] == this.direction) {
-                this.directionIndex = i;
-                break;
-            }
-        }
+        this.directionIndex = IntStream.range(0, directionStatus.length)
+                .filter(i -> directionStatus[i] == direction)
+                .findFirst()
+                .orElse(-1);
     }
+
 
     private char getDirection() {
         return directionStatus[directionIndex];
@@ -33,35 +35,33 @@ public class MarsRover {
     }
 
     private boolean isValidCommand(char command) {
-        for (Command cmd : Command.values()) {
-            if (cmd.name().charAt(0) == command) {
-                return true;
-            }
-        }
-        return false;
+        return Arrays.stream(Command.values())
+                .map(cmd -> cmd.name().charAt(0))
+                .anyMatch(c -> c == command);
     }
 
     public String updateStatus(String commands) {
-        for (char command : commands.toCharArray()) {
-            if (isValidCommand(command)) {
-                switch (command) {
-                    case 'R':
-                        changeDirection('R');
-                        break;
-                    case 'L':
-                        changeDirection('L');
-                        break;
-                    case 'M':
-                        moveForward();
-                        break;
-                    case 'B':
-                        moveBackward();
-                        break;
-                    default:
-                        throw new IllegalArgumentException("Invalid command: " + command);
-                }
-            }
-        }
+        commands.chars()
+                .mapToObj(c -> (char) c)
+                .filter(this::isValidCommand)
+                .forEach(command -> {
+                    switch (command) {
+                        case 'R':
+                            changeDirection('R');
+                            break;
+                        case 'L':
+                            changeDirection('L');
+                            break;
+                        case 'M':
+                            moveForward();
+                            break;
+                        case 'B':
+                            moveBackward();
+                            break;
+                        default:
+                            throw new IllegalArgumentException("Invalid command: " + command);
+                    }
+                });
         return showStatus();
     }
 
@@ -101,16 +101,15 @@ public class MarsRover {
 
     private void changeDirection(char turn) {
         if (turn == 'R') {
-            directionIndex = directionIndex > 0 ?  (directionIndex + 1) % 4  : ((directionIndex + 5) % 4);
+            directionIndex = (directionIndex + 1) % 4;
         } else if (turn == 'L') {
-            directionIndex =  directionIndex > 0 ? (directionIndex + 3) % 4 :  ((directionIndex + 7) % 4);
+            directionIndex = (directionIndex + 3) % 4;
         }
     }
 
     public static void main(String[] args) {
         MarsRover rover = new MarsRover(0, 0, 'N');
         rover.updateStatus("MMRM");
-
         rover.showStatus();
     }
 }
