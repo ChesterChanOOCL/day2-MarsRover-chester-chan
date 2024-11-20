@@ -1,8 +1,8 @@
 package Test;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
 public class MarsRoverTest {
 
     @Test
@@ -17,6 +17,7 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:N", report);
     }
+
     @Test
     public void should_face_west_when_orient_north_and_turn_left(){
         // Given
@@ -29,6 +30,7 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:W", report);
     }
+
     @Test
     public void should_face_west_when_orient_north_and_turn_right(){
         // Given
@@ -42,10 +44,8 @@ public class MarsRoverTest {
         Assertions.assertEquals("0:0:E", report);
     }
 
-
     @Test
     public void should_face_south_when_orient_east_and_turn_left(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'E');
 
@@ -57,10 +57,8 @@ public class MarsRoverTest {
         Assertions.assertEquals("0:0:N", report);
     }
 
-
     @Test
     public void should_face_south_when_orient_east_and_turn_right(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'E');
 
@@ -71,6 +69,7 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:S", report);
     }
+
     @Test
     public void should_be_minus1_minus1_E_when_turn_left_given_minus1_minus1_S(){
         // Given
@@ -83,9 +82,9 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("-1:-1:E", report);
     }
+
     @Test
     public void should_face_west_when_orient_south_and_turn_right(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'S');
 
@@ -96,9 +95,9 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:W", report);
     }
+
     @Test
     public void should_face_south_when_orient_west_and_turn_left(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'W');
 
@@ -109,9 +108,9 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("0:0:S", report);
     }
+
     @Test
     public void should_face_north_when_orient_west_and_turn_right(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'W');
 
@@ -125,7 +124,6 @@ public class MarsRoverTest {
 
     @Test
     public void should_be_0_1_N_when_0_0_N_and_move_forward(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'N');
 
@@ -165,7 +163,6 @@ public class MarsRoverTest {
 
     @Test
     public void should_be_minus1_0_W_when_0_0_W_and_move_forward(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'W');
 
@@ -176,9 +173,6 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("-1:0:W", report);
     }
-
-
-
 
     @Test
     public void should_stay_the_same_when_inputInvalidCharacter_given_minus1_minus1_S(){
@@ -192,7 +186,8 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("-1:-1:S", report);
     }
-    //EXTRA feature
+
+    // EXTRA feature
     @Test
     public void should_be_1_2_E_when_multipleCommand_given_0_0_N(){
         // Given
@@ -205,7 +200,4 @@ public class MarsRoverTest {
         //Then
         Assertions.assertEquals("1:2:E", report);
     }
-
-
-
 }
