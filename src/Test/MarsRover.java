@@ -100,11 +100,13 @@ public class MarsRover {
         }
     }
 
+
     private void changeDirection(char turn) {
         if (turn == 'R') {
-            directionIndex = (directionIndex + 1) % 4;
+            directionIndex = directionIndex > 0 ?  (directionIndex + 1) % 4  : ((directionIndex + 5) % 4);
+
         } else if (turn == 'L') {
-            directionIndex = (directionIndex + 3) % 4;
+            directionIndex =  directionIndex > 0 ? (directionIndex + 3) % 4 :  ((directionIndex + 7) % 4);
         }
     }
 
