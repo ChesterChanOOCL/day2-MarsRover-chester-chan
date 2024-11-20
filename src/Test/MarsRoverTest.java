@@ -196,7 +196,6 @@ public class MarsRoverTest {
         //When
         rover.updateStatus("MMRM");
         String report = rover.showStatus();
-
         //Then
         Assertions.assertEquals("1:2:E", report);
     }
