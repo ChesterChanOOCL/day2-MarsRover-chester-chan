@@ -139,7 +139,6 @@ public class MarsRoverTest {
 
     @Test
     public void should_be_1_0_E_when_0_0_E_and_move_forward(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'E');
 
@@ -153,7 +152,6 @@ public class MarsRoverTest {
 
     @Test
     public void should_be_0_minus1_S_when_0_0_S_and_move_forward(){
-
         // Given
         MarsRover rover = new MarsRover(0,0,'S');
 

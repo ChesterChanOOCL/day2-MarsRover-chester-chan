@@ -2,7 +2,6 @@ package Test;
 
 public class MarsRover {
     private static char[] directionStatus = {'N', 'E', 'S', 'W'};
-
     private int x;
     private int y;
     private char direction;
@@ -100,7 +99,6 @@ public class MarsRover {
         }
     }
 
-
     private void changeDirection(char turn) {
         if (turn == 'R') {
             directionIndex = directionIndex > 0 ?  (directionIndex + 1) % 4  : ((directionIndex + 5) % 4);
@@ -113,6 +111,6 @@ public class MarsRover {
     public static void main(String[] args) {
         MarsRover rover = new MarsRover(0, 0, 'N');
         rover.updateStatus("MMRM");
-        rover.showStatus();  // This will show the final status after executing all commands
+        rover.showStatus();
     }
 }
